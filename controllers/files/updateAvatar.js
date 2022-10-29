@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 const { User } = require("../../service");
-const { configImg,RequestError} = require("../../helpers");
+const { configImg, RequestError} = require("../../helpers");
 
 const avatarsDir = path.join("public", "avatars");
 const updateAvatar = async (req, res) => {
