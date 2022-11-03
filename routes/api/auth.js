@@ -31,4 +31,9 @@ router.post(
   schemas.verifyEmailSchema,
   ctrlWrapper(ctrl.resendVerify)
 );
+router.get(
+  "/users",
+  // schemas.userValidation,
+  ctrlWrapper(ctrl.getAllUsers)
+);
 module.exports = router;

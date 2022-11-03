@@ -1,2 +1,3 @@
 const { User, schemas } = require("./schemasAuth");
-module.exports = { User, schemas };
+const  Role  = require("./roleAuth");
+module.exports = { User, schemas,Role };

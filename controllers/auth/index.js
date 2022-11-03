@@ -5,6 +5,7 @@ const getCurrentUser = require("./getCurrentUser");
 const updateSubscription = require("./updateSubscription");
 const verify = require("./verifyUser");
 const resendVerify = require("./resendVerify");
+const getAllUsers = require("./getAllUsers");
 
 module.exports = {
   registerUser,
@@ -14,4 +15,5 @@ module.exports = {
   updateSubscription,
   verify,
   resendVerify,
+  getAllUsers,
 };

@@ -8,4 +8,4 @@ const Role = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-module.exports = model("Role", Role);
+module.exports = model("role", Role);
