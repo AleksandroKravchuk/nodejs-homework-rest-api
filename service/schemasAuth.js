@@ -31,6 +31,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Verify token is required"],
     },
+    roles: [{ type: String, ref: "Role" }],
   },
   { versionKey: false, timestamps: true }
 );
