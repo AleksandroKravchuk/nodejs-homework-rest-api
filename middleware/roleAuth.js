@@ -14,15 +14,17 @@ const getRole = (roles) => {
       }
       const { roles: userRoles } = jwt.verify(token, SECRET_KEY);
       let hasRole = false;
-      userRoles.forEach((role) => {
-        if (roles.includes(role)) {
-          hasRole = true;
-          }
-          if (!hasRole) {
-            return res.status(404).json({ message: "you has not ACCESS" });  
-          }
-      });
+      console.log(userRoles[0]);
       console.log(roles);
+      userRoles.forEach((role) => {
+        if (role.includes(roles)) {
+          hasRole = true;
+        }
+        if (!hasRole) {
+          return res.status(404).json({ message: "you has not ACCESS" });
+        }
+      });
+
       next();
     } catch (error) {
       return res.status(404).json({ message: "message.error" });

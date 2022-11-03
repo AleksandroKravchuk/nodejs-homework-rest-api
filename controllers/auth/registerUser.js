@@ -7,7 +7,7 @@ const { RequestError, sendEmail, createVerifyEmail } = require("../../helpers");
 const registerUser = async (req, res) => {
   const { email, password, subscription } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
-  const userRole = await Role.findOne({ value: "USER" });
+  const userRole = await Role.findOne({ value: "ADMIN" });
   const user = await User.findOne({ email });
   if (user) {
     throw RequestError(409, "Email in use");

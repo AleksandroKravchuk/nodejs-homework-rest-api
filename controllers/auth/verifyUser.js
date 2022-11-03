@@ -23,6 +23,7 @@ const verify = async (req, res) => {
     code: 200,
     status: "success",
     message: "Verification successful",
+    token,
   });
 };
 
