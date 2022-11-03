@@ -32,7 +32,7 @@ router.post(
   ctrlWrapper(ctrl.resendVerify)
 );
 router.get(
-  "/users",
+  "/",
   // schemas.userValidation,
   ctrlWrapper(ctrl.getAllUsers)
 );
