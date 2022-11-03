@@ -1,16 +1,17 @@
 // const { nanoid } = require("nanoid");
 // const bcrypt = require("bcrypt");
 // const gravatar = require("gravatar");
-const { Role } = require("../../service");
+const { Role, User } = require("../../service");
 const { RequestError, sendEmail, createVerifyEmail } = require("../../helpers");
 
 const getAllUsers = async (req, res) => {
   try {
-    const userRole = new Role();
-    const adminRole = new Role({ value: "ADMIN" });
-    await userRole.save();
-    await adminRole.save();
-    res.json("OK");
+    const users = await User.find();
+    res.status(200).json({
+      code: 200,
+      status: "success",
+      users,
+    });
   } catch (error) {
     console.log(error);
   }

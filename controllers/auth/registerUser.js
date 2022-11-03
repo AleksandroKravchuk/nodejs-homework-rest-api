@@ -1,13 +1,13 @@
 const { nanoid } = require("nanoid");
 const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
-const { User } = require("../../service");
+const { User, Role } = require("../../service");
 const { RequestError, sendEmail, createVerifyEmail } = require("../../helpers");
 
 const registerUser = async (req, res) => {
   const { email, password, subscription } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
-
+  const userRole = await Role.findOne({ value: "USER" });
   const user = await User.findOne({ email });
   if (user) {
     throw RequestError(409, "Email in use");
@@ -24,9 +24,10 @@ const registerUser = async (req, res) => {
       subscription,
       avatarURL: secureUrl,
       verificationToken,
+      roles: userRole,
     });
-    const mail = createVerifyEmail(email, verificationToken);
-    await sendEmail(mail);
+    // const mail = createVerifyEmail(email, verificationToken);
+    // await sendEmail(mail);
     res.status(201).json({
       code: 201,
       status: "success",
