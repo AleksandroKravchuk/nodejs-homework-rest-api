@@ -11,6 +11,7 @@ const verify = async (req, res) => {
   }
   const payload = {
     id: user._id,
+    roles: user.roles[0].value,
   };
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "10h" });
   await User.findByIdAndUpdate(user._id, {

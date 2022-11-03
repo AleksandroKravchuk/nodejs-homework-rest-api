@@ -3,7 +3,7 @@ const router = express.Router();
 const { ctrlWrapper } = require("../../helpers");
 const { schemas } = require("../../service/schemasAuth");
 const { auth: ctrl, files: ctrlFs } = require("../../controllers");
-const { authenticate, upload } = require("../../middleware");
+const { authenticate, upload, getRole } = require("../../middleware");
 
 router.post(
   "/register",
@@ -33,6 +33,7 @@ router.post(
 );
 router.get(
   "/",
+  getRole,
   // schemas.userValidation,
   ctrlWrapper(ctrl.getAllUsers)
 );

@@ -5,7 +5,7 @@ const Role = new Schema(
   {
     value: { type: String, enum: ["USER", "ADMIN"], default: "USER" },
   },
-  { versionKey: false, timestamps: true }
+  { versionKey: false }
 );
 
 module.exports = model("role", Role);
