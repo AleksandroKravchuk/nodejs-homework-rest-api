@@ -12,8 +12,18 @@ const getRole = (roles) => {
       if (!token) {
         return res.status(404).json({ message: "not authorization" });
       }
-      const { roles } = jwt.verify(token, SECRET_KEY);
+      const { roles: userRoles } = jwt.verify(token, SECRET_KEY);
+      let hasRole = false;
+      userRoles.forEach((role) => {
+        if (roles.includes(role)) {
+          hasRole = true;
+          }
+          if (!hasRole) {
+            return res.status(404).json({ message: "you has not ACCESS" });  
+          }
+      });
       console.log(roles);
+      next();
     } catch (error) {
       return res.status(404).json({ message: "message.error" });
     }

@@ -33,7 +33,7 @@ router.post(
 );
 router.get(
   "/",
-  getRole,
+  getRole(["ADMIN"]),
   // schemas.userValidation,
   ctrlWrapper(ctrl.getAllUsers)
 );
