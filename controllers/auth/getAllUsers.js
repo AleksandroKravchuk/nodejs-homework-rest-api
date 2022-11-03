@@ -10,7 +10,10 @@ const getAllUsers = async (req, res) => {
     const adminRole = new Role({ value: "ADMIN" });
     await userRole.save();
     await adminRole.save();
-  } catch (error) {}
+    res.json("OK");
+  } catch (error) {
+    console.log(error);
+  }
   //   const { email, password, subscription } = req.body;
   //   const hashPassword = await bcrypt.hash(password, 10);
 
